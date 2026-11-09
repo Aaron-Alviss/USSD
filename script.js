@@ -62,7 +62,8 @@ const TEXT = {
     fillField: "Veuillez saisir une réponse.",
     timeout: "Session USSD terminée après une période d'inactivité. Recomposez *543# pour recommencer.",
     reset: "Simulation réinitialisée.",
-    voiceNotFound: "Aucune voix correspondant à cette langue n'est installée. Choisissez une voix disponible dans les paramètres vocaux du navigateur.",
+    voiceNotFound: "Aucune voix dédiée n'est disponible pour cette langue. Le navigateur essaie sa voix par défaut; la prononciation peut varier.",
+    translationNotice: "Les textes de cette langue doivent encore être validés. Le navigateur lit la version de démonstration avec une voix disponible, ce qui peut modifier la prononciation.",
     speechError: "La lecture vocale a échoué. Vérifiez les voix installées dans votre navigateur."
   },
   ln: { welcome: "BIENVENUE SUR TERRA AGRI [TRADUCTION À VALIDER]", slogan: "Mieux informer. Mieux décider. Mieux cultiver. [TRADUCTION À VALIDER]", chooseLanguage: "Choisissez votre langue : [TRADUCTION À VALIDER]", instruction: "Répondez par le numéro correspondant. [TRADUCTION À VALIDER]", mainTitle: "TERRA AGRI – MENU PRINCIPAL [TRADUCTION À VALIDER]", main: ["Conseils agricoles [TRADUCTION À VALIDER]", "Météo agricole [TRADUCTION À VALIDER]", "Maladies et ravageurs [TRADUCTION À VALIDER]", "Calendrier agricole [TRADUCTION À VALIDER]", "Prix du marché [TRADUCTION À VALIDER]", "Vendre mes produits [TRADUCTION À VALIDER]", "Assistance agricole [TRADUCTION À VALIDER]", "Langue [TRADUCTION À VALIDER]", "Quitter [TRADUCTION À VALIDER]"], select: "Tapez le numéro de votre choix. [TRADUCTION À VALIDER]", cropsTitle: "CHOISISSEZ VOTRE CULTURE [TRADUCTION À VALIDER]", crops: ["Manioc [TRADUCTION À VALIDER]", "Maïs [TRADUCTION À VALIDER]", "Riz [TRADUCTION À VALIDER]", "Haricot [TRADUCTION À VALIDER]", "Tomate [TRADUCTION À VALIDER]", "Autres cultures [TRADUCTION À VALIDER]"], adviceTitle: "CONSEIL POUR [TRADUCTION À VALIDER]", adviceActions: ["Autre conseil [TRADUCTION À VALIDER]", "Écouter le conseil [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]", "Retour [TRADUCTION À VALIDER]"], provinceTitle: "MÉTÉO AGRICOLE — CHOISISSEZ VOTRE PROVINCE [TRADUCTION À VALIDER]", provinces: ["Kinshasa", "Kongo Central", "Kasaï Central", "Kasaï Oriental", "Kwilu", "Kwango", "Haut-Katanga"], weatherActions: ["Conseil d'irrigation [TRADUCTION À VALIDER]", "Écouter [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]", "Retour [TRADUCTION À VALIDER]"], diseaseTitle: "MALADIES ET RAVAGEURS [TRADUCTION À VALIDER]", diseases: ["Maladies du manioc [TRADUCTION À VALIDER]", "Maladies du maïs [TRADUCTION À VALIDER]", "Ravageurs des cultures [TRADUCTION À VALIDER]", "Prévention [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]"], calendarTitle: "CALENDRIER AGRICOLE [TRADUCTION À VALIDER]", calendar: ["Période de semis [TRADUCTION À VALIDER]", "Période de plantation [TRADUCTION À VALIDER]", "Période de récolte [TRADUCTION À VALIDER]", "Conseils saisonniers [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]"], pricesTitle: "PRIX INDICATIFS DU MARCHÉ [TRADUCTION À VALIDER]", priceCrops: ["Manioc [TRADUCTION À VALIDER]", "Maïs [TRADUCTION À VALIDER]", "Riz [TRADUCTION À VALIDER]", "Haricot [TRADUCTION À VALIDER]", "Tomate [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]"], marketTitle: "TERRA MARCHÉ [TRADUCTION À VALIDER]", market: ["Publier un produit [TRADUCTION À VALIDER]", "Consulter les produits [TRADUCTION À VALIDER]", "Contacter un acheteur [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]"], assistanceTitle: "ASSISTANCE TERRA AGRI [TRADUCTION À VALIDER]", assistance: ["Poser une question agricole [TRADUCTION À VALIDER]", "Problème d'irrigation [TRADUCTION À VALIDER]", "Problème de culture [TRADUCTION À VALIDER]", "Contacter un agent [TRADUCTION À VALIDER]", "Menu principal [TRADUCTION À VALIDER]"], languageTitle: "CHOISISSEZ VOTRE LANGUE [TRADUCTION À VALIDER]", back: "Retour [TRADUCTION À VALIDER]", exit: "Session USSD terminée. [TRADUCTION À VALIDER]", invalid: "Réponse invalide. [TRADUCTION À VALIDER]", listen: "Écouter [TRADUCTION À VALIDER]", stop: "Arrêter la lecture [TRADUCTION À VALIDER]", speechUnavailable: "Lecture vocale non prise en charge. [TRADUCTION À VALIDER]", recognitionUnavailable: "Dictée vocale non prise en charge. [TRADUCTION À VALIDER]", demoWeather: "Données simulées. [TRADUCTION À VALIDER]", demoPrice: "Prix simulé. [TRADUCTION À VALIDER]", diagnostic: "Diagnostic à confirmer par un spécialiste agricole. [TRADUCTION À VALIDER]", generalCalendar: "Indications à adapter localement. [TRADUCTION À VALIDER]", noListings: "Aucune annonce. [TRADUCTION À VALIDER]", noBuyer: "Service non connecté. [TRADUCTION À VALIDER]", noPublication: "Annonce non publiée. [TRADUCTION À VALIDER]", agentDisclaimer: "Agent fictif — traduction à valider.", helpIntro: "Bonjour ! [TRADUCTION À VALIDER]", enterAnswer: "Votre réponse [TRADUCTION À VALIDER]", send: "Envoyer [TRADUCTION À VALIDER]", speakAdvice: "Écouter le conseil [TRADUCTION À VALIDER]", languageChanged: "Langue modifiée. [TRADUCTION À VALIDER]", sayPrompt: "Votre message [TRADUCTION À VALIDER]", fillField: "Veuillez saisir une réponse. [TRADUCTION À VALIDER]", timeout: "Session expirée. [TRADUCTION À VALIDER]", reset: "Simulation réinitialisée. [TRADUCTION À VALIDER]", voiceNotFound: "Voix non disponible. [TRADUCTION À VALIDER]", speechError: "Lecture vocale impossible. [TRADUCTION À VALIDER]" },
@@ -136,6 +137,8 @@ let timeoutHandle = null;
 let toastHandle = null;
 let recognition = null;
 let lastSpeechText = "";
+let speechEnabled = false;
+let lastMissingVoiceNotice = "";
 let sale = {};
 let listings = [];
 let adviceIndex = 0;
@@ -176,7 +179,7 @@ function renderScreen() {
   const screen = currentScreen;
   const lines = screen.lines || [];
   const optionMarkup = (screen.options || []).map(function (option) {
-    return '<div class="ussd-option"><b>' + esc(option.value) + '.</b><span>' + esc(option.label) + '</span></div>';
+    return '<button class="ussd-option" type="button" data-choice="' + esc(option.value) + '"><b>' + esc(option.value) + '.</b><span>' + esc(option.label) + '</span></button>';
   }).join("");
   const responseConfig = screen.input || { label: tr("enterAnswer"), placeholder: "1", inputmode: "numeric" };
   const textInput = screen.id === "ended"
@@ -209,7 +212,7 @@ function renderScreen() {
   if (screen.id === "advice") lastSpeechText = lines.map(function (line) { return typeof line === "string" ? line : line.text; }).join(" ");
   else lastSpeechText = [screen.title].concat(lines.map(function (line) { return typeof line === "string" ? line : line.text; })).concat((screen.options || []).map(function (option) { return option.value + ". " + option.label; })).join(". ");
   content.scrollTop = 0;
-  if (screen.autospeak) speak(lastSpeechText);
+  if (speechEnabled && screen.speak !== false) speak(lastSpeechText);
   resetSessionTimeout();
 }
 
@@ -226,7 +229,7 @@ function showDialer() {
   submitIcon.textContent = "⌕";
   backButton.disabled = true;
   hangupButton.disabled = true;
-  lastSpeechText = "";
+  lastSpeechText = "Composez " + SERVICE_CODE + " pour démarrer le service Terra Agri.";
 }
 
 function resetSessionTimeout() {
@@ -251,7 +254,7 @@ function startCall() {
   sessionActive = true;
   history = [];
   clearTimeout(timeoutHandle);
-  showScreen(makeScreen("connecting", "TERRA AGRI", ["Connexion au service TERRA AGRI..."], []), false);
+  showScreen(makeScreen("connecting", "TERRA AGRI", ["Connexion au service TERRA AGRI..."], [], { speak: false }), false);
   window.setTimeout(function () {
     if (!sessionActive || !currentScreen || currentScreen.id !== "connecting") return;
     showScreen(makeScreen("language", tr("welcome"), [tr("slogan"), tr("chooseLanguage"), tr("instruction")], optionsFor(LANGUAGES.map(function (item) { return item.name; })), { autospeak: true }), false);
@@ -297,7 +300,7 @@ function setError(message) {
 
 function responseInputValue() {
   const field = document.getElementById("response-input");
-  return field ? field.value.trim() : input.value.trim();
+  return field ? field.value.trim() : "";
 }
 
 function sendResponse(value) {
@@ -561,19 +564,59 @@ function speak(text) {
     return;
   }
   const selectedLang = voiceSelect.value;
-  const utterance = new SpeechSynthesisUtterance(text || lastSpeechText || tr("welcome"));
-  utterance.lang = selectedLang;
-  const voices = window.speechSynthesis.getVoices();
-  const voice = voices.find(function (item) { return item.lang.toLowerCase() === selectedLang.toLowerCase(); }) ||
-    voices.find(function (item) { return item.lang.toLowerCase().startsWith(selectedLang.slice(0, 2).toLowerCase()); });
-  if (!voice && selectedLang !== "fr-FR") {
-    showToast(tr("voiceNotFound"));
-    return;
-  }
+  const spokenText = (text || lastSpeechText || tr("welcome")).replace(/\s*\[TRADUCTION À VALIDER\]/g, "");
+  const voice = findVoice(selectedLang);
+  const utterance = new SpeechSynthesisUtterance(spokenText);
+  utterance.lang = voice ? voice.lang : selectedLang;
   if (voice) utterance.voice = voice;
+  else {
+    const defaultVoice = window.speechSynthesis.getVoices().find(function (item) { return item.default; });
+    if (defaultVoice) {
+      utterance.voice = defaultVoice;
+      utterance.lang = defaultVoice.lang;
+    }
+  }
+  updateVoiceStatus(voice || utterance.voice);
   utterance.onerror = function () { showToast(tr("speechError")); };
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(utterance);
+  if (!voice && selectedLang !== "fr-FR" && lastMissingVoiceNotice !== selectedLang) {
+    lastMissingVoiceNotice = selectedLang;
+    showToast(TEXT.fr.translationNotice);
+  }
+}
+
+function findVoice(lang) {
+  if (!("speechSynthesis" in window)) return null;
+  const normalized = lang.toLowerCase();
+  const baseLanguage = normalized.split("-")[0];
+  const voices = window.speechSynthesis.getVoices();
+  return voices.find(function (item) { return item.lang.toLowerCase() === normalized; }) ||
+    voices.find(function (item) { return item.lang.toLowerCase().startsWith(baseLanguage + "-"); }) || null;
+}
+
+function updateVoiceStatus(voice) {
+  voiceStatus.textContent = speechEnabled
+    ? (voice ? "Lecture active · " + voice.lang : "Lecture active · voix par défaut")
+    : (voice ? "Voix disponible · " + voice.name : "Voix du navigateur");
+}
+
+function toggleSpeech() {
+  if (!("speechSynthesis" in window) || !window.SpeechSynthesisUtterance) {
+    showToast(tr("speechUnavailable"));
+    return;
+  }
+  speechEnabled = !speechEnabled;
+  const button = document.getElementById("speak-current");
+  button.setAttribute("aria-pressed", String(speechEnabled));
+  button.setAttribute("aria-label", speechEnabled ? "Désactiver la lecture automatique" : "Activer la lecture automatique");
+  button.title = speechEnabled ? "Lecture automatique activée — cliquer pour arrêter" : "Activer la lecture automatique des menus";
+  if (speechEnabled) {
+    speak(lastSpeechText);
+  } else {
+    window.speechSynthesis.cancel();
+    updateVoiceStatus(null);
+  }
 }
 
 function updateTime() {
@@ -594,14 +637,17 @@ document.getElementById("reset-button").addEventListener("click", function () {
   document.getElementById("ussd-input").value = "";
   showToast(tr("reset"));
 });
-document.getElementById("speak-current").addEventListener("click", function () {
-  if (!("speechSynthesis" in window)) { showToast(tr("speechUnavailable")); return; }
-  if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-  else speak(lastSpeechText);
-});
+document.getElementById("speak-current").addEventListener("click", toggleSpeech);
 voiceSelect.addEventListener("change", function () {
   if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  updateVoiceStatus(null);
+  if (speechEnabled && currentScreen) speak(lastSpeechText);
 });
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.onvoiceschanged = function () {
+    if (currentScreen) updateVoiceStatus(findVoice(voiceSelect.value));
+  };
+}
 keypad.addEventListener("click", function (event) {
   const button = event.target.closest("button[data-key]");
   if (!button) return;
@@ -611,6 +657,11 @@ keypad.addEventListener("click", function (event) {
   responseField.focus();
 });
 content.addEventListener("click", function (event) {
+  const choice = event.target.closest("[data-choice]");
+  if (choice) {
+    sendResponse(choice.dataset.choice);
+    return;
+  }
   const action = event.target.closest("[data-action]");
   if (!action) return;
   if (action.dataset.action === "dictate") startDictation();
