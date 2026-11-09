@@ -73,6 +73,7 @@ h1 em { color: #4a9367; font-style: normal; }
 .phone-appbar small { margin-top: 3px; color: #849087; font-size: 8px; }
 .speaker-button { width: 30px; height: 30px; margin-left: auto; border: 0; border-radius: 50%; color: #4e7656; background: #edf4e9; font-size: 14px; }
 .speaker-button:hover, .speaker-button:focus-visible { background: #dfedd8; }
+.speaker-button[aria-pressed="true"] { color: #fff; background: #368b53; box-shadow: 0 0 0 3px #368b5322; }
 
 .ussd-content { display: flex; height: 336px; flex-direction: column; overflow: auto; padding: 15px 15px 10px; scrollbar-color: #cad7c9 transparent; scrollbar-width: thin; }
 .dialer-view { display: flex; height: 100%; flex-direction: column; align-items: center; }
@@ -92,7 +93,8 @@ h1 em { color: #4a9367; font-style: normal; }
 .ussd-dialog p { margin: 6px 0; color: #48584d; font-size: 10px; line-height: 1.6; white-space: pre-line; }
 .ussd-dialog .disclaimer { color: #8a743c; font-size: 9px; font-style: italic; }
 .ussd-options { display: grid; gap: 4px; margin-top: 10px; }
-.ussd-option { display: flex; align-items: flex-start; gap: 7px; color: #314c37; font-size: 10px; line-height: 1.5; }
+.ussd-option { display: flex; width: 100%; align-items: flex-start; gap: 7px; padding: 2px 3px; border: 0; border-radius: 5px; color: #314c37; background: transparent; text-align: left; font-size: 10px; line-height: 1.5; }
+.ussd-option:hover, .ussd-option:focus-visible { outline: 0; background: #f0f5ed; }
 .ussd-option b { flex: 0 0 14px; color: #4b8b59; }
 .ussd-error { margin-top: 8px !important; color: #b34d44 !important; font-weight: 600; }
 .response-form { margin-top: auto; padding-top: 10px; }
@@ -139,6 +141,7 @@ h1 em { color: #4a9367; font-style: normal; }
 .voice-label { display: block; margin: 15px 0 6px; color: #68776d; font-size: 9px; font-weight: 600; }
 .voice-select { width: 100%; padding: 8px; border: 1px solid #e4e9e2; border-radius: 8px; outline: 0; color: #526458; background: #fff; font-size: 9px; }
 .voice-select:focus { border-color: #80ae85; }
+.voice-note { margin: 7px 0 0; color: #879189; font-size: 8px; line-height: 1.6; }
 .page-footer { display: flex; justify-content: space-between; padding: 17px 0 24px; border-top: 1px solid rgba(18,61,43,.08); color: #9aa49c; font-size: 8px; letter-spacing: .04em; }
 .toast { position: fixed; z-index: 10; bottom: 24px; left: 50%; max-width: calc(100% - 32px); padding: 11px 16px; border-radius: 10px; color: white; background: #243f2d; box-shadow: 0 8px 25px #152b1d30; font-size: 12px; opacity: 0; pointer-events: none; transform: translate(-50%, 10px); transition: opacity .2s, transform .2s; }
 .toast.visible { opacity: 1; transform: translate(-50%, 0); }
