@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d2b">
+  <title>TERRA AGRI USSD — Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="brand-header">
+      <a class="brand-mark" href="#" aria-label="Terra Agri, accueil">
+        <span class="brand-icon" aria-hidden="true">🌱</span>
+        <span>TERRA <strong>AGRI</strong></span>
+      </a>
+      <span class="prototype-pill"><span aria-hidden="true"></span> Prototype interactif</span>
+    </header>
+
+    <section class="showcase" aria-label="Démonstration Terra Agri USSD">
+      <div class="intro-panel">
+        <p class="eyebrow">TERRA AGRI TECHNOLOGIES</p>
+        <h1>L'agriculture utile,<br><em>à portée de main.</em></h1>
+        <p class="intro-copy">Un service agricole accessible même aux utilisateurs disposant d'un téléphone simple, grâce au futur service USSD.</p>
+        <div class="feature-list">
+          <div class="feature-item"><span class="feature-icon">⌁</span><span><strong>Simple et accessible</strong><small>Une navigation familière, sans Internet.</small></span></div>
+          <div class="feature-item"><span class="feature-icon">⌂</span><span><strong>Conçu pour les agriculteurs</strong><small>Conseils, météo simulée et marchés.</small></span></div>
+          <div class="feature-item"><span class="feature-icon">◖</span><span><strong>Une démonstration interactive</strong><small>Explorez chaque service directement.</small></span></div>
+        </div>
+        <div class="offline-note"><span aria-hidden="true">●</span> Fonctionne localement dans votre navigateur</div>
+      </div>
+
+      <div class="phone-column">
+        <div class="phone" aria-label="Téléphone Android virtuel">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="status-bar">
+                <span id="status-time">09:41</span>
+                <div class="status-icons" aria-label="Réseau, Wi-Fi, batterie">
+                  <span class="signal-icon" aria-hidden="true">▂▄▆</span>
+                  <span aria-hidden="true">⌁</span>
+                  <span class="battery-icon" aria-hidden="true"><i></i></span>
+                </div>
+              </div>
+              <div class="phone-appbar">
+                <span class="app-logo" aria-hidden="true">🌱</span>
+                <span><b>TERRA AGRI</b><small>Service USSD simulé</small></span>
+                <button class="speaker-button" id="speak-current" type="button" aria-label="Lire le message à voix haute" title="Lire le message à voix haute">🔊</button>
+              </div>
+              <section class="ussd-content" id="ussd-content" aria-live="polite">
+                <div class="dialer-view">
+                  <p class="dialer-label">Saisissez le code du service</p>
+                  <label class="sr-only" for="ussd-input">Code USSD ou réponse</label>
+                  <input id="ussd-input" class="ussd-input" type="text" inputmode="text" autocomplete="off" placeholder="*543#" aria-describedby="dialer-hint">
+                  <p class="dialer-hint" id="dialer-hint">Composez <strong>*543#</strong> pour commencer</p>
+                  <div class="dialer-banner"><span>🌿</span><span><b>Des services agricoles pour tous</b><small>Mieux informer. Mieux décider. Mieux cultiver.</small></span></div>
+                </div>
+              </section>
+              <div class="phone-actions">
+                <button class="action-button back-button" id="back-button" type="button" aria-label="Retour" title="Retour">‹</button>
+                <button class="action-button call-button" id="submit-button" type="button" aria-label="Appeler ou envoyer la réponse" title="Appeler ou envoyer la réponse"><span id="submit-icon">⌕</span></button>
+                <button class="action-button end-button" id="hangup-button" type="button" aria-label="Raccrocher" title="Raccrocher" disabled>■</button>
+              </div>
+              <div class="keypad" id="keypad" aria-label="Clavier numérique">
+                <button type="button" data-key="1"><b>1</b><small>&nbsp;</small></button>
+                <button type="button" data-key="2"><b>2</b><small>ABC</small></button>
+                <button type="button" data-key="3"><b>3</b><small>DEF</small></button>
+                <button type="button" data-key="4"><b>4</b><small>GHI</small></button>
+                <button type="button" data-key="5"><b>5</b><small>JKL</small></button>
+                <button type="button" data-key="6"><b>6</b><small>MNO</small></button>
+                <button type="button" data-key="7"><b>7</b><small>PQRS</small></button>
+                <button type="button" data-key="8"><b>8</b><small>TUV</small></button>
+                <button type="button" data-key="9"><b>9</b><small>WXYZ</small></button>
+                <button type="button" data-key="*"><b>*</b><small>&nbsp;</small></button>
+                <button type="button" data-key="0"><b>0</b><small>+</small></button>
+                <button type="button" data-key="#"><b>#</b><small>&nbsp;</small></button>
+              </div>
+              <div class="phone-bottom">
+                <button class="reset-button" id="reset-button" type="button">↻ Réinitialiser</button>
+                <span class="speaker-status" id="voice-status">Voix du navigateur</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption"><span></span> Essayez le code <strong>*543#</strong></p>
+      </div>
+
+      <aside class="details-panel">
+        <div class="detail-heading"><span class="detail-icon">✳</span><span><strong>Une expérience pensée pour le terrain</strong><small>Le futur service Terra Agri</small></span></div>
+        <p>Parcourez des conseils agricoles, consultez des informations de démonstration et découvrez les parcours de vente et d'assistance.</p>
+        <div class="detail-divider"></div>
+        <div class="demo-label"><span>i</span><b>À propos de cette démo</b></div>
+        <p class="demo-copy">Les informations météo et les prix sont simulés. Aucune annonce n'est publiée et aucun agent humain n'est connecté.</p>
+        <div class="telecom-warning"><span aria-hidden="true">⌁</span><strong>PROTOTYPE DE SIMULATION</strong><small>NON CONNECTÉ À UN OPÉRATEUR TÉLÉCOM</small></div>
+        <label class="voice-label" for="voice-language">Langue de lecture vocale</label>
+        <select id="voice-language" class="voice-select" aria-label="Langue de lecture vocale">
+          <option value="fr-FR">Français</option>
+          <option value="ln-CD">Lingala (si disponible)</option>
+          <option value="sw-CD">Swahili (si disponible)</option>
+          <option value="lu-CD">Tshiluba (si disponible)</option>
+          <option value="kg-CD">Kikongo (si disponible)</option>
+        </select>
+      </aside>
+    </section>
+
+    <footer class="page-footer"><span>© TERRA AGRI TECHNOLOGIES</span><span>Prototype de présentation · République démocratique du Congo</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
